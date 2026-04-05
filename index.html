@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greg & Shiphra London Adventure</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('https://images.unsplash.com/photo-1505761671935-60b3a7427bad') no-repeat center center/cover;
+    }
+    .overlay {
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 20px;
+    }
+    .number { font-size: 3rem; }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Greg & Shiphra London Adventure</h1>
+    <div id="countdown"></div>
+  </div>
+
+  <script>
+    const target = new Date('2026-05-18T11:00:00');
+
+    function update() {
+      const now = new Date();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').innerText = 'Enjoy London!';
+        return;
+      }
+
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff / (1000*60*60)) % 24);
+      const m = Math.floor((diff / (1000*60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('countdown').innerText =
+        d + 'd ' + h + 'h ' + m + 'm ' + s + 's';
+    }
+
+    setInterval(update, 1000);
+    update();
+  </script>
+</body>
+</html>
